@@ -1,19 +1,16 @@
-import next from "next";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import React from "react";
+import Header from "../components/Header";
 
 interface dashboardProps {}
 
 const dashboard = ({}: dashboardProps) => {
   const { data: session, status } = useSession({ required: true });
 
-  if (status === "authenticated") {
-    return (
-      <div>
-        <p>Welcome {session.user?.name} </p>
-      </div>
-    );
-  } else {
-  }
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 export default dashboard;
