@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
-        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
+        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-800">
           MUNJANG <span className="text-purple-300"> 문장 </span>
         </h1>
         <div className="p-4" />

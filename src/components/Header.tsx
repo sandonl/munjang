@@ -8,10 +8,10 @@ const Header = ({}: HeaderProps) => {
 
   return (
     <div
-      className="bg-purple-300 p-3 h-16 top-0 w-full 
+      className="absolute bg-purple-300 p-3 h-16 top-0 w-full 
     flex justify-between items-center"
     >
-      <div className="text-gray-700 font-extrabold px-5">
+      <div className="text-gray-700 text-2xl font-extrabold px-5">
         MUNJANG <span className="text-purple-500"> 문장 </span>
       </div>
       <div className="flex items-center">
