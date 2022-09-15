@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         </h1>
         <div className="p-4" />
         <button
-          className="text-3xl bg-purple-300 px-6 py-4 rounded-md"
+          className="text-3xl bg-purple-300 px-6 py-4 rounded-md font-bold"
           onClick={() => signIn(undefined, { callbackUrl: "/dashboard" })}
         >
           Login

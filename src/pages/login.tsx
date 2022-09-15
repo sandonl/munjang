@@ -3,6 +3,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 interface loginProps {}
 
+// TODO: Delete Component.
 const login = ({}: loginProps) => {
   const { data: session } = useSession();
 
