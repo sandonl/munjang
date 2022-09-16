@@ -1,4 +1,5 @@
 import { signOut, useSession } from "next-auth/react";
+import NextLink from "next/link";
 import React from "react";
 
 interface HeaderProps {}
@@ -11,9 +12,11 @@ const Header = ({}: HeaderProps) => {
       className="absolute bg-purple-300 p-3 h-16 top-0 w-full 
     flex justify-between items-center"
     >
-      <div className="text-gray-700 text-2xl font-extrabold px-5">
-        MUNJANG <span className="text-purple-500"> 문장 </span>
-      </div>
+      <NextLink href={"/dashboard"}>
+        <a className="text-gray-700 text-2xl font-extrabold px-5">
+          MUNJANG <span className="text-purple-500"> 문장 </span>
+        </a>
+      </NextLink>
       <div className="flex items-center">
         <div className="font-bold mx-2">{session?.user?.name}</div>
         <img

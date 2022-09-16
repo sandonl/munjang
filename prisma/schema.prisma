@@ -49,6 +49,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    Card          Card[]
 }
 
 model VerificationToken {
@@ -57,4 +58,13 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Card {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    user      User     @relation(fields: [userId], references: [id])
+    front     String
+    back      String
+    userId    String
 }
