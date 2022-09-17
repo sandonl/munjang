@@ -9,7 +9,7 @@ const reviewcards = ({}: reviewcardsProps) => {
     <>
       <Header />
       <div className="h-screen w-screen flex flex-col justify-center items-center">
-        <Card front={"This is the front"} back={""} />
+        <Card front={"This is the front"} back={"This is the back"} />
       </div>
     </>
   );
