@@ -86,7 +86,7 @@ const NewCards = ({}: NewCardsProps) => {
           {errors ? "Please enter text for both the front and back" : ""}
         </div>
         <div className="text-green-200 font-bold text-center h-3">
-          {cardSubmitted ? "Card Submitted! " : ""}
+          {cardSubmitted ? "Card Created! " : ""}
         </div>
       </div>
     </>

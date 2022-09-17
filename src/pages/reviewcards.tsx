@@ -1,8 +1,17 @@
 import React from "react";
+import Card from "../components/Card";
+import Header from "../components/Header";
 
 interface reviewcardsProps {}
 
 const reviewcards = ({}: reviewcardsProps) => {
-  return <> reviewcards </>;
+  return (
+    <>
+      <Header />
+      <div className="h-screen w-screen flex flex-col justify-center items-center">
+        <Card front={"This is the front"} back={""} />
+      </div>
+    </>
+  );
 };
 export default reviewcards;
