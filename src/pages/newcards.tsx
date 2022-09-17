@@ -1,10 +1,15 @@
+import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import Header from "../components/Header";
+import { formatErrors } from "../env/client.mjs";
 import { trpc } from "../utils/trpc";
 
 interface NewCardsProps {}
 
 const NewCards = ({}: NewCardsProps) => {
+  const { data: session } = useSession({ required: true });
+  const [cardSubmitted, setCardSubmitted] = useState<boolean>(false);
+  const [errors, setErrors] = useState<boolean>(false);
   const [formData, setFormData] = useState({
     front: "",
     back: "",
@@ -12,12 +17,6 @@ const NewCards = ({}: NewCardsProps) => {
   const newCard = trpc.useMutation(["card.createCard"]);
 
   const divStyling = "flex flex-col text-purple-300 text-3xl font-bold gap-2";
-
-  //   const handleNewCard = async () => {
-  //       await newCard.mutateAsync({
-  //           front:
-  //       })
-  //   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,9 +28,25 @@ const NewCards = ({}: NewCardsProps) => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
+    if (!(formData.front && formData.back)) {
+      setErrors(true);
+      setTimeout(() => {
+        setErrors(false);
+      }, 3000);
+      return;
+    } else {
+      await newCard.mutateAsync({
+        ...formData,
+        userId: session?.user?.id!,
+      });
+      setFormData({ front: "", back: "" });
+      setCardSubmitted(true);
+      setTimeout(() => {
+        setCardSubmitted(false);
+      }, 3000);
+    }
   };
 
   return (
@@ -67,6 +82,12 @@ const NewCards = ({}: NewCardsProps) => {
             </button>
           </div>
         </form>
+        <div className="text-red-200 font-bold text-center h-3">
+          {errors ? "Please enter text for both the front and back" : ""}
+        </div>
+        <div className="text-green-200 font-bold text-center h-3">
+          {cardSubmitted ? "Card Submitted! " : ""}
+        </div>
       </div>
     </>
   );
