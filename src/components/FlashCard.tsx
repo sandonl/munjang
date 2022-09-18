@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-interface CardProps {
+interface FlashCardProps {
   front: string;
   back: string;
 }
 
-const Card = ({ front, back }: CardProps) => {
+const FlashCard = ({ front, back }: FlashCardProps) => {
   const [backShown, setBackShown] = useState<boolean>(false);
 
   const cardButtonStyles =
@@ -18,7 +18,7 @@ const Card = ({ front, back }: CardProps) => {
   return (
     <>
       <div
-        className="border rounded-md border-purple-300 w-6/12 h-80 text-white flex
+        className="m-4 border rounded-md border-purple-300 w-6/12 h-80 text-white flex
         flex-col justify-center items-center
       "
       >
@@ -52,4 +52,4 @@ const Card = ({ front, back }: CardProps) => {
     </>
   );
 };
-export default Card;
+export default FlashCard;
