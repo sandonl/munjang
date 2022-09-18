@@ -2,6 +2,34 @@ import { createRouter } from "./context";
 import { z } from "zod";
 
 export const cardRouter = createRouter()
+  .query("retrieveCards", {
+    input: z.object({
+      userId: z.string(),
+    }),
+    async resolve({ input, ctx }) {
+      const userCards = await ctx.prisma.card.findMany({
+        where: {
+          userId: input.userId,
+        },
+      });
+      return userCards;
+    },
+  })
+  .mutation("passReview", {
+    input: z.object({
+      cardId: z.string(),
+    }),
+    async resolve({ input, ctx }) {
+      await ctx.prisma.card.update({
+        where: {
+          id: input.cardId,
+        },
+        data: {
+          reviews: { increment: 1 },
+        },
+      });
+    },
+  })
   .mutation("createCard", {
     input: z.object({
       front: z.string(),
@@ -17,18 +45,5 @@ export const cardRouter = createRouter()
         },
       });
       return newCard;
-    },
-  })
-  .query("retrieveCards", {
-    input: z.object({
-      userId: z.string(),
-    }),
-    async resolve({ input, ctx }) {
-      const userCards = await ctx.prisma.card.findMany({
-        where: {
-          userId: input.userId,
-        },
-      });
-      return userCards;
     },
   });

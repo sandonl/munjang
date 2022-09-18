@@ -36,8 +36,6 @@ const reviewcards = ({}: reviewcardsProps) => {
       await retrieveCards.refetch();
     };
     fetchCards();
-
-    // console.log(cardsRemaining);
   }, [session]);
 
   if (retrieveCards.isLoading) {
@@ -60,6 +58,7 @@ const reviewcards = ({}: reviewcardsProps) => {
         {cardsRemaining ? (
           <FlashCard
             key={retrieveCards.data[index]?.id}
+            cardId={retrieveCards.data[index]?.id!}
             front={retrieveCards.data[index]?.front!}
             back={retrieveCards.data[index]?.back!}
             incrementIndex={incrementIndex}

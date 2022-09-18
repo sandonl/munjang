@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Card` ADD COLUMN `reviews` INTEGER NOT NULL DEFAULT 0;

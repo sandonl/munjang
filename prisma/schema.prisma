@@ -67,4 +67,5 @@ model Card {
     front     String
     back      String
     userId    String
+    reviews   Int      @default(0)
 }

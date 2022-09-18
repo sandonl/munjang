@@ -53,7 +53,7 @@ const NewCards = ({}: NewCardsProps) => {
     <>
       <Header />
       <div className="h-screen w-screen flex flex-col justify-center items-center">
-        <div className="text-purple-200 text-lg font-bold">
+        <div className="text-purple-200 text-lg font-bold text-center">
           Front - Target Sentence <br />
           Back - Target Word and it's definition
         </div>

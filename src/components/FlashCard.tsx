@@ -1,19 +1,29 @@
 import React, { useState } from "react";
+import { trpc } from "../utils/trpc";
 
 interface FlashCardProps {
+  cardId: string;
   front: string;
   back: string;
   incrementIndex: () => void;
 }
 
-const FlashCard = ({ front, back, incrementIndex }: FlashCardProps) => {
+const FlashCard = ({ cardId, front, back, incrementIndex }: FlashCardProps) => {
   const [backShown, setBackShown] = useState<boolean>(false);
+  const passReview = trpc.useMutation(["card.passReview"]);
 
   const cardButtonStyles =
     " px-4 py-2 m-4 border border-purple-300 rounded-md ";
 
   const showBack = () => {
     setBackShown(true);
+  };
+
+  const passCard = () => {
+    incrementIndex();
+    passReview.mutateAsync({
+      cardId,
+    });
   };
 
   return (
@@ -38,10 +48,11 @@ const FlashCard = ({ front, back, incrementIndex }: FlashCardProps) => {
         <div className="">
           {backShown ? (
             <div>
-              <button className={cardButtonStyles}> Fail </button>
               <button className={cardButtonStyles} onClick={incrementIndex}>
-                {" "}
-                Pass{" "}
+                Fail
+              </button>
+              <button className={cardButtonStyles} onClick={passCard}>
+                Pass
               </button>
             </div>
           ) : (
