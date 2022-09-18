@@ -10,13 +10,14 @@ interface reviewcardsProps {}
 
 const reviewcards = ({}: reviewcardsProps) => {
   const { data: session } = useSession({ required: true });
-  const [userCards, setUserCards] = useState<Card[]>([]);
+  const [index, setIndex] = useState<number>(0);
+  const [cardsRemaining, setCardsRemaining] = useState(0);
   const retrieveCards = trpc.useQuery(
     ["card.retrieveCards", { userId: session?.user?.id! }],
     {
       enabled: false,
       onSuccess: (cards: Card[]) => {
-        setUserCards(cards);
+        setCardsRemaining(cards.length);
       },
     }
   );
@@ -24,29 +25,53 @@ const reviewcards = ({}: reviewcardsProps) => {
   const centerItems =
     "h-screen w-screen flex flex-col justify-center items-center";
 
+  const incrementIndex = () => {
+    setIndex((prev) => prev + 1);
+    setCardsRemaining((prev) => prev - 1);
+  };
+
   useEffect(() => {
     if (!session) return;
     const fetchCards = async () => {
       await retrieveCards.refetch();
     };
     fetchCards();
+
+    // console.log(cardsRemaining);
   }, [session]);
+
+  if (retrieveCards.isLoading) {
+    return (
+      <>
+        <Header />
+        <div className={`${centerItems} text-white text-3xl`}>
+          Loading Cards...
+        </div>
+      </>
+    );
+  }
+
+  if (!retrieveCards.data) return null;
 
   return (
     <>
       <Header />
-      {retrieveCards.isLoading ? (
-        <div className={`${centerItems} text-white text-3xl`}>
-          Loading Data...
-        </div>
-      ) : (
-        <div className={centerItems}>
-          {userCards.map((card) => (
-            <FlashCard key={card.id} front={card.front} back={card.back} />
-          ))}
-        </div>
-      )}
+      <div className={centerItems}>
+        {cardsRemaining ? (
+          <FlashCard
+            key={retrieveCards.data[index]?.id}
+            front={retrieveCards.data[index]?.front!}
+            back={retrieveCards.data[index]?.back!}
+            incrementIndex={incrementIndex}
+          />
+        ) : (
+          <div className={`${centerItems} text-white text-3xl`}>
+            You have no more cards remaining.
+          </div>
+        )}
+      </div>
     </>
   );
 };
+
 export default reviewcards;

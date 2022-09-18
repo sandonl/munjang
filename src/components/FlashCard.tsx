@@ -3,9 +3,10 @@ import React, { useState } from "react";
 interface FlashCardProps {
   front: string;
   back: string;
+  incrementIndex: () => void;
 }
 
-const FlashCard = ({ front, back }: FlashCardProps) => {
+const FlashCard = ({ front, back, incrementIndex }: FlashCardProps) => {
   const [backShown, setBackShown] = useState<boolean>(false);
 
   const cardButtonStyles =
@@ -38,7 +39,10 @@ const FlashCard = ({ front, back }: FlashCardProps) => {
           {backShown ? (
             <div>
               <button className={cardButtonStyles}> Fail </button>
-              <button className={cardButtonStyles}> Pass </button>
+              <button className={cardButtonStyles} onClick={incrementIndex}>
+                {" "}
+                Pass{" "}
+              </button>
             </div>
           ) : (
             <div>
