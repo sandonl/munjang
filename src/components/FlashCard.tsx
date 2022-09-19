@@ -13,7 +13,7 @@ const FlashCard = ({ cardId, front, back, incrementIndex }: FlashCardProps) => {
   const passReview = trpc.useMutation(["card.passReview"]);
 
   const cardButtonStyles =
-    " px-4 py-2 m-4 border border-purple-300 rounded-md ";
+    " px-4 py-2 m-4 border border-purple-300 rounded-md hover:bg-purple-300 duration-300 ";
 
   const showBack = () => {
     setBackShown(true);
@@ -33,14 +33,12 @@ const FlashCard = ({ cardId, front, back, incrementIndex }: FlashCardProps) => {
         flex-col justify-center items-center
       "
       >
-        <div className="text-3xl h-1/2 p-4 text-center">
-          Front:
+        <div className="text-3xl h-1/2 p-8 text-center">
           <div>{front}</div>
         </div>
-        <div className="text-3xl h-1/2 p-4 text-center">
+        <div className="text-3xl h-1/2 p-8 text-center">
           {backShown && (
             <div>
-              Back:
               <div>{back}</div>
             </div>
           )}

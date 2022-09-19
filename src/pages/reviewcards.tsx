@@ -38,7 +38,11 @@ const reviewcards = ({}: reviewcardsProps) => {
     fetchCards();
   }, [session]);
 
-  if (retrieveCards.isLoading) {
+  if (
+    retrieveCards.isLoading ||
+    retrieveCards.isFetching ||
+    retrieveCards.isRefetching
+  ) {
     return (
       <>
         <Header />

@@ -3,8 +3,9 @@
 ## TODO:
 
 - A way for the system to recognise that a review has been completed for the day. (DONE)
-- Deploy to FE
+- Deploy to FE (DONE)
 - Handling fails
+  - To handle a fail, we need to not increase the review counter but i
 - Retiring Cards (I.e. when an upper limit is reached, we need to retire cards)
 
 This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
