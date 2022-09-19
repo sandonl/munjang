@@ -24,8 +24,15 @@ const Header = ({}: HeaderProps) => {
           alt="User image"
           className=" rounded-full w-7 h-7 mx-2"
         />
+        <a
+          className="px-4 py-2 mx-1 rounded-md bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
+          href="https://papago.naver.com/"
+          target="_blank"
+        >
+          Papago (파파고)
+        </a>
         <button
-          className="px-4 py-2 rounded-md bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
+          className="px-4 py-2 mx-1 rounded-md bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
           onClick={() => signOut({ callbackUrl: "/" })}
         >
           Sign Out
