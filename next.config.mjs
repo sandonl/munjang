@@ -20,4 +20,10 @@ export default defineNextConfig({
     locales: ["en"],
     defaultLocale: "en",
   },
+  images: {
+    domains: ["lh3.googleusercontent.com"],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 });

@@ -1,15 +1,7 @@
-import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import NextLink from "next/link";
-import React from "react";
 import Header from "../components/Header";
 
-interface dashboardProps {}
-
-const dashboard = ({}: dashboardProps) => {
-  const router = useRouter();
-  const { data: session, status } = useSession({ required: true });
-
+const dashboard = () => {
   const dashboardButton =
     "px-6 py-4 m-3 rounded-md bg-purple-200 text-2xl text-center font-bold hover:bg-purple-100 duration-300 w-56";
 

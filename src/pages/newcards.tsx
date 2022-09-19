@@ -1,7 +1,6 @@
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import Header from "../components/Header";
-import { formatErrors } from "../env/client.mjs";
 import { trpc } from "../utils/trpc";
 
 interface NewCardsProps {}
