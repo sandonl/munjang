@@ -30,6 +30,10 @@ const reviewcards = ({}: reviewcardsProps) => {
     setCardsRemaining((prev) => prev - 1);
   };
 
+  const lastDay = Date.now() - 24 * 60 * 60 * 1000 * 2;
+  const last24Hours = new Date(lastDay).toISOString();
+  console.log(last24Hours);
+
   useEffect(() => {
     if (!session) return;
     const fetchCards = async () => {

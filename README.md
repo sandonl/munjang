@@ -1,4 +1,9 @@
-# Create T3 App
+# Munjang - Korean Sentence Mining Flashcards
+
+## TODO:
+
+- A way for the system to recognise that a review has been completed for the day.
+-
 
 This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
 

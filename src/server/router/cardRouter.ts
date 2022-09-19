@@ -1,6 +1,9 @@
 import { createRouter } from "./context";
 import { z } from "zod";
 
+const lastDay = Date.now() - 24 * 60 * 60 * 1000;
+const last24Hours = new Date(lastDay).toISOString();
+
 export const cardRouter = createRouter()
   .query("retrieveCards", {
     input: z.object({
@@ -10,6 +13,16 @@ export const cardRouter = createRouter()
       const userCards = await ctx.prisma.card.findMany({
         where: {
           userId: input.userId,
+          OR: [
+            {
+              reviews: 0,
+            },
+            {
+              lastReviewed: {
+                lte: last24Hours,
+              },
+            },
+          ],
         },
       });
       return userCards;
@@ -26,6 +39,7 @@ export const cardRouter = createRouter()
         },
         data: {
           reviews: { increment: 1 },
+          lastReviewed: new Date().toISOString(),
         },
       });
     },
