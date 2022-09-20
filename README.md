@@ -1,4 +1,6 @@
-# Munjang - Korean Sentence Mining Flashcards
+# Munjang - Online SRS for learning Korean - Flashcards
+
+The role of an SRS is crucial to language learners being able to retain and learn vocabulary. This is an online SRS which allows users to make and keep track of their own cards and review them on a daily basis (similar to DuoLingo or Anki).
 
 ## TODO:
 
@@ -12,6 +14,8 @@
 - Add back buttons on the review and new card pages
 
 This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
+
+# T3 - Stack Details:
 
 ## Why are there `.js` files in here?
 

@@ -1,7 +1,9 @@
 import { useSession } from "next-auth/react";
+import Head from "next/head";
 import React, { useState } from "react";
 import Header from "../components/Header";
 import { trpc } from "../utils/trpc";
+import NextLink from "next/link";
 
 interface NewCardsProps {}
 
@@ -50,13 +52,16 @@ const NewCards = ({}: NewCardsProps) => {
 
   return (
     <>
+      <Head>
+        <title> 문장 - MUNJANG - New Cards </title>
+      </Head>
       <Header />
-      <div className="h-screen w-screen flex flex-col justify-center items-center ">
-        <div className="border border-purple-300 rounded-md p-10 pt-12 align-middle">
-          <div className="text-purple-200 text-md font-bold ">
-            Front - Target Sentence <br />
-            Back - Target Word and it's definition
-          </div>
+      <div className="center-items">
+        <div className="text-purple-200 text-md font-bold p-4  flex flex-col items-center ">
+          Front - Target Sentence <br />
+          Back - Target Word and it's definition
+        </div>
+        <div className="border border-purple-300 rounded-md w-6/12 p-10 pt-12 flex flex-col justify-center items-center ">
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col p-4 gap-4 w-96">
               <div className={divStyling}>
@@ -77,7 +82,7 @@ const NewCards = ({}: NewCardsProps) => {
                   className="rounded-md p-3 text-black text-lg"
                 />
               </div>
-              <button className="px-6 py-4 m-3 rounded-md bg-purple-200 text-2xl text-center font-bold hover:bg-purple-100 duration-300 w-56 self-center">
+              <button className="px-4 py-2 m-3 rounded-md bg-purple-200 text-xl text-center font-bold hover:bg-purple-100 duration-300 w-46 self-center">
                 Create Card
               </button>
             </div>

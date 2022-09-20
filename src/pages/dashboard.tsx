@@ -8,7 +8,7 @@ const dashboard = () => {
   return (
     <>
       <Header />
-      <div className="h-screen w-screen flex flex-col justify-center items-center">
+      <div className="center-items">
         <div className="text-5xl font-bold text-white">
           What would you like to do today?
         </div>

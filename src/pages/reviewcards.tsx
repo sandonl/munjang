@@ -1,14 +1,14 @@
 import { Card } from "@prisma/client";
 import { useSession } from "next-auth/react";
+import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import FlashCard from "../components/FlashCard";
+import NextLink from "next/link";
 
 import Header from "../components/Header";
 import { trpc } from "../utils/trpc";
 
-interface reviewcardsProps {}
-
-const reviewcards = ({}: reviewcardsProps) => {
+const reviewcards = () => {
   const { data: session } = useSession({ required: true });
   const [index, setIndex] = useState<number>(0);
   const [cardsRemaining, setCardsRemaining] = useState(0);
@@ -21,9 +21,6 @@ const reviewcards = ({}: reviewcardsProps) => {
       },
     }
   );
-
-  const centerItems =
-    "h-screen w-screen flex flex-col justify-center items-center";
 
   const incrementIndex = () => {
     setIndex((prev) => prev + 1);
@@ -46,9 +43,7 @@ const reviewcards = ({}: reviewcardsProps) => {
     return (
       <>
         <Header />
-        <div className={`${centerItems} text-white text-3xl`}>
-          Loading Cards...
-        </div>
+        <div className="center-items text-white text-3xl">Loading Cards...</div>
       </>
     );
   }
@@ -57,8 +52,11 @@ const reviewcards = ({}: reviewcardsProps) => {
 
   return (
     <>
+      <Head>
+        <title> 문장 - MUNJANG - Review Cards </title>
+      </Head>
       <Header />
-      <div className={centerItems}>
+      <div className="center-items">
         {cardsRemaining ? (
           <FlashCard
             key={retrieveCards.data[index]?.id}
@@ -68,7 +66,7 @@ const reviewcards = ({}: reviewcardsProps) => {
             incrementIndex={incrementIndex}
           />
         ) : (
-          <div className={`${centerItems} text-white text-3xl`}>
+          <div className="center-items text-white text-3xl">
             You have no more cards remaining today. Come back again tomorrow! 🥳
           </div>
         )}
