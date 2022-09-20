@@ -5,8 +5,11 @@
 - A way for the system to recognise that a review has been completed for the day. (DONE)
 - Deploy to FE (DONE)
 - Handling fails
-  - To handle a fail, we need to not increase the review counter but i
+  - To handle a fail, we need to not increase the review counter but still update the date of when the card was last reviewed
 - Retiring Cards (I.e. when an upper limit is reached, we need to retire cards)
+- Add a favicon (DONE)
+- New Frontpage with a description of how the app works (DONE)
+- Add back buttons on the review and new card pages
 
 This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
 

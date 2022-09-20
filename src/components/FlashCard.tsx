@@ -11,6 +11,7 @@ interface FlashCardProps {
 const FlashCard = ({ cardId, front, back, incrementIndex }: FlashCardProps) => {
   const [backShown, setBackShown] = useState<boolean>(false);
   const passReview = trpc.useMutation(["card.passReview"]);
+  const failReview = trpc.useMutation(["card.failReview"]);
 
   const cardButtonStyles =
     " px-4 py-2 m-4 border border-purple-300 rounded-md hover:bg-purple-300 duration-300 ";
@@ -22,6 +23,13 @@ const FlashCard = ({ cardId, front, back, incrementIndex }: FlashCardProps) => {
   const passCard = () => {
     incrementIndex();
     passReview.mutateAsync({
+      cardId,
+    });
+  };
+
+  const failCard = () => {
+    incrementIndex();
+    failReview.mutateAsync({
       cardId,
     });
   };
@@ -46,7 +54,7 @@ const FlashCard = ({ cardId, front, back, incrementIndex }: FlashCardProps) => {
         <div className="">
           {backShown ? (
             <div>
-              <button className={cardButtonStyles} onClick={incrementIndex}>
+              <button className={cardButtonStyles} onClick={failCard}>
                 Fail
               </button>
               <button className={cardButtonStyles} onClick={passCard}>

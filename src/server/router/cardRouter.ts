@@ -15,12 +15,12 @@ export const cardRouter = createRouter()
           userId: input.userId,
           OR: [
             {
-              reviews: 0,
-            },
-            {
               lastReviewed: {
                 lte: last24Hours,
               },
+            },
+            {
+              reviews: 0,
             },
           ],
         },
@@ -39,6 +39,21 @@ export const cardRouter = createRouter()
         },
         data: {
           reviews: { increment: 1 },
+          lastReviewed: new Date().toISOString(),
+        },
+      });
+    },
+  })
+  .mutation("failReview", {
+    input: z.object({
+      cardId: z.string(),
+    }),
+    async resolve({ input, ctx }) {
+      await ctx.prisma.card.update({
+        where: {
+          id: input.cardId,
+        },
+        data: {
           lastReviewed: new Date().toISOString(),
         },
       });
