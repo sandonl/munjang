@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* body {
   @apply bg-slate-600;
-}
+} */
 
 @layer components {
   .center-items {

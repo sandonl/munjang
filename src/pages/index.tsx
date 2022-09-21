@@ -5,7 +5,7 @@ const Home: NextPage = () => {
   return (
     <>
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
-        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-800">
+        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-400">
           MUNJANG <span className="text-purple-300 font-extrabold"> 문장 </span>
         </h1>
         <div className="p-4" />
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
           </a>
         </div>
         <button
-          className="text-3xl bg-purple-300 px-6 py-4 rounded-md font-bold hover:bg-purple-200 duration-300 "
+          className="btn btn-primary text-3xl btn-lg"
           onClick={() => signIn(undefined, { callbackUrl: "/dashboard" })}
         >
           LOGIN

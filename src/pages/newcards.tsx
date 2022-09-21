@@ -3,7 +3,6 @@ import Head from "next/head";
 import React, { useState } from "react";
 import Header from "../components/Header";
 import { trpc } from "../utils/trpc";
-import NextLink from "next/link";
 
 interface NewCardsProps {}
 
@@ -57,34 +56,38 @@ const NewCards = ({}: NewCardsProps) => {
       </Head>
       <Header />
       <div className="center-items">
-        <div className="text-purple-200 text-md font-bold p-4  flex flex-col items-center ">
-          Front - Target Sentence <br />
-          Back - Target Word and it's definition
-        </div>
         <div className="border border-purple-300 rounded-md w-6/12 p-10 pt-12 flex flex-col justify-center items-center ">
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col p-4 gap-4 w-96">
               <div className={divStyling}>
-                Front
+                <div
+                  className="tooltip cursor-pointer text-left"
+                  data-tip="Front - Target Sentence"
+                >
+                  <h3> Front </h3>
+                </div>
                 <input
                   value={formData.front}
                   onChange={handleChange}
                   name="front"
-                  className="rounded-md p-3 text-black text-lg"
+                  className="input input-primary"
                 />
               </div>
               <div className={divStyling}>
-                Back
+                <div
+                  className="tooltip cursor-pointer text-left"
+                  data-tip="Back - Target Word and it's definition"
+                >
+                  <h3>Back </h3>
+                </div>
                 <input
                   value={formData.back}
                   onChange={handleChange}
                   name="back"
-                  className="rounded-md p-3 text-black text-lg"
+                  className="input input-primary"
                 />
               </div>
-              <button className="px-4 py-2 m-3 rounded-md bg-purple-200 text-xl text-center font-bold hover:bg-purple-100 duration-300 w-46 self-center">
-                Create Card
-              </button>
+              <button className="btn btn-primary">Create Card</button>
             </div>
           </form>
           <div className="text-red-200 font-bold text-center h-3">

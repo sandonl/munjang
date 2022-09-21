@@ -11,7 +11,8 @@ The role of an SRS is crucial to language learners being able to retain and lear
 - Retiring Cards (I.e. when an upper limit is reached, we need to retire cards)
 - Add a favicon (DONE)
 - New Frontpage with a description of how the app works (DONE)
-- Add back buttons on the review and new card pages
+- Add back buttons on the review and new card pages (DONE) - fixed with dashboard on the header
+- Add Tooltip (DaisyUI) -> (DONE)
 
 This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
 

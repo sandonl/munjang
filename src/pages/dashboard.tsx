@@ -2,9 +2,6 @@ import NextLink from "next/link";
 import Header from "../components/Header";
 
 const dashboard = () => {
-  const dashboardButton =
-    "px-6 py-4 m-3 rounded-md bg-purple-200 text-2xl text-center font-bold hover:bg-purple-100 duration-300 w-56";
-
   return (
     <>
       <Header />
@@ -12,14 +9,15 @@ const dashboard = () => {
         <div className="text-5xl font-bold text-white">
           What would you like to do today?
         </div>
-        <div className="p-2" />
+        <div className="p-3" />
         <NextLink href={"/reviewcards"}>
-          <a className={dashboardButton}>
+          <a className="btn w-56">
             <span> Review Cards </span>
           </a>
         </NextLink>
+        <div className="p-3" />
         <NextLink href={"/newcards"}>
-          <a className={dashboardButton}>
+          <a className="btn w-56">
             <span> Add New Cards </span>
           </a>
         </NextLink>

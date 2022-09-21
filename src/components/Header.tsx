@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <div
-      className=" bg-purple-300 p-3 h-16 top-0 w-full 
+      className=" bg-secondary p-3 h-16 top-0 w-full 
     flex justify-between items-center"
     >
       <NextLink href={"/dashboard"}>
@@ -18,21 +18,23 @@ const Header = () => {
       <div className="flex items-center">
         <NextLink href={"/dashboard"}>
           <a
-            className="p-4 px-4 py-2 mx-1 rounded-md
-         bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
+            //     className="p-4 px-4 py-2 mx-1 rounded-md
+            //  bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
+            className="btn btn-secondary hover:bg-purple-300 border-none mx-2"
           >
             Dashboard
           </a>
         </NextLink>
         <a
-          className="px-4 py-2 mx-1 rounded-md bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
+          // className="px-4 py-2 mx-1 rounded-md bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
+          className="btn btn-secondary  hover:bg-purple-300 border-none mx-2"
           href="https://papago.naver.com/"
           target="_blank"
           rel="noreferrer"
         >
           Papago (파파고)
         </a>
-        <div className="font-bold mx-2">{session?.user?.name}</div>
+        {/* <p className="prose uppercase"> {session?.user?.name}</p> */}
 
         <div className="h-7 w-7 mx-2 relative">
           <Image
@@ -44,7 +46,8 @@ const Header = () => {
         </div>
 
         <button
-          className="px-4 py-2 mx-1 rounded-md bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
+          // className="px-4 py-2 mx-1 rounded-md bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
+          className="btn btn-secondary hover:bg-purple-300 border-none mx-2"
           onClick={() => signOut({ callbackUrl: "/" })}
         >
           Sign Out
