@@ -42,6 +42,15 @@ export const cardRouter = createRouter()
           lastReviewed: new Date().toISOString(),
         },
       });
+      // Used to retire cards that have reached a 50 review limit.
+      await ctx.prisma.card.deleteMany({
+        where: {
+          id: input.cardId,
+          reviews: {
+            equals: 50,
+          },
+        },
+      });
     },
   })
   .mutation("failReview", {

@@ -2,6 +2,8 @@
 
 The role of an SRS is crucial to language learners being able to retain and learn vocabulary. This is an online SRS which allows users to make and keep track of their own cards and review them on a daily basis (similar to DuoLingo or Anki).
 
+The site is hosted on Vercel (FE) and PlanetScale (BE).
+
 ## TODO:
 
 - A way for the system to recognise that a review has been completed for the day. (DONE)
@@ -13,6 +15,10 @@ The role of an SRS is crucial to language learners being able to retain and lear
 - New Frontpage with a description of how the app works (DONE)
 - Add back buttons on the review and new card pages (DONE) - fixed with dashboard on the header
 - Add Tooltip (DaisyUI) -> (DONE)
+- Better Loading response and indicator for creating a card
+- Fonts are different on the new card page.
+- Maybe add ability to create decks
+- Add key press listeners
 
 This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
 

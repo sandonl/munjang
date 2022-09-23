@@ -61,7 +61,7 @@ const NewCards = ({}: NewCardsProps) => {
             <div className="flex flex-col p-4 gap-4 w-96">
               <div className={divStyling}>
                 <div
-                  className="tooltip cursor-pointer text-left"
+                  className="tooltip cursor-pointer"
                   data-tip="Front - Target Sentence"
                 >
                   <h3> Front </h3>
@@ -75,7 +75,7 @@ const NewCards = ({}: NewCardsProps) => {
               </div>
               <div className={divStyling}>
                 <div
-                  className="tooltip cursor-pointer text-left"
+                  className="tooltip cursor-pointer"
                   data-tip="Back - Target Word and it's definition"
                 >
                   <h3>Back </h3>
@@ -90,10 +90,10 @@ const NewCards = ({}: NewCardsProps) => {
               <button className="btn btn-primary">Create Card</button>
             </div>
           </form>
-          <div className="text-red-200 font-bold text-center h-3">
+          <div className="text-red-200 font-bold text-center h-3 transition-opacity">
             {errors ? "Please enter text for both the front and back" : ""}
           </div>
-          <div className="text-green-200 font-bold text-center h-3">
+          <div className="text-green-200 font-bold text-center h-3 transition-opacity ">
             {cardSubmitted ? "Card Created! " : ""}
           </div>
         </div>

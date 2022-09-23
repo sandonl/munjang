@@ -1,12 +1,22 @@
 import { Card } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import FlashCard from "../components/FlashCard";
-import NextLink from "next/link";
 
 import Header from "../components/Header";
 import { trpc } from "../utils/trpc";
+
+const HeadElements = () => {
+  return (
+    <>
+      <Head>
+        <title> 문장 - MUNJANG - Review Cards </title>
+      </Head>
+      <Header />
+    </>
+  );
+};
 
 const reviewcards = () => {
   const { data: session } = useSession({ required: true });
@@ -42,8 +52,13 @@ const reviewcards = () => {
   ) {
     return (
       <>
-        <Header />
-        <div className="center-items text-white text-3xl">Loading Cards...</div>
+        <HeadElements />
+        <div className="center-items text-white text-3xl">
+          <div
+            className="spinner-border animate-spin w-8 h-8 border-4 rounded-full"
+            role="status"
+          ></div>
+        </div>
       </>
     );
   }
@@ -52,10 +67,7 @@ const reviewcards = () => {
 
   return (
     <>
-      <Head>
-        <title> 문장 - MUNJANG - Review Cards </title>
-      </Head>
-      <Header />
+      <HeadElements />
       <div className="center-items">
         {cardsRemaining ? (
           <FlashCard
