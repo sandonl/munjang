@@ -87,7 +87,9 @@ const NewCards = ({}: NewCardsProps) => {
                   className="input input-primary"
                 />
               </div>
-              <button className="btn btn-primary">Create Card</button>
+              <button type="submit" className="btn btn-primary">
+                Create Card
+              </button>
             </div>
           </form>
           <div className="text-red-200 font-bold text-center h-3 transition-opacity">

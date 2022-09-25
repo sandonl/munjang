@@ -18,7 +18,7 @@ The site is hosted on Vercel (FE) and PlanetScale (BE).
 - Better Loading response and indicator for creating a card
 - Fonts are different on the new card page.
 - Maybe add ability to create decks
-- Add key press listeners
+- Add key press listeners (DONE for New Card)
 
 This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
 

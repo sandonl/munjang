@@ -17,16 +17,11 @@ const Header = () => {
       </NextLink>
       <div className="flex items-center">
         <NextLink href={"/dashboard"}>
-          <a
-            //     className="p-4 px-4 py-2 mx-1 rounded-md
-            //  bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
-            className="btn btn-secondary hover:bg-purple-300 border-none mx-2"
-          >
+          <a className="btn btn-secondary hover:bg-purple-300 border-none mx-2">
             Dashboard
           </a>
         </NextLink>
         <a
-          // className="px-4 py-2 mx-1 rounded-md bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
           className="btn btn-secondary  hover:bg-purple-300 border-none mx-2"
           href="https://papago.naver.com/"
           target="_blank"
@@ -34,7 +29,6 @@ const Header = () => {
         >
           Papago (파파고)
         </a>
-        {/* <p className="prose uppercase"> {session?.user?.name}</p> */}
 
         <div className="h-7 w-7 mx-2 relative">
           <Image
@@ -46,7 +40,6 @@ const Header = () => {
         </div>
 
         <button
-          // className="px-4 py-2 mx-1 rounded-md bg-purple-300 hover:bg-purple-200  duration-300 font-semibold"
           className="btn btn-secondary hover:bg-purple-300 border-none mx-2"
           onClick={() => signOut({ callbackUrl: "/" })}
         >

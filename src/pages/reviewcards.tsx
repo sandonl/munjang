@@ -45,6 +45,7 @@ const reviewcards = () => {
     fetchCards();
   }, [session]);
 
+  // To be refactored
   if (
     retrieveCards.isLoading ||
     retrieveCards.isFetching ||
