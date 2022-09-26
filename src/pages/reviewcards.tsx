@@ -55,10 +55,7 @@ const reviewcards = () => {
       <>
         <HeadElements />
         <div className="center-items text-white text-3xl">
-          <div
-            className="spinner-border animate-spin w-8 h-8 border-4 rounded-full"
-            role="status"
-          ></div>
+          <div> Loading ... </div>
         </div>
       </>
     );

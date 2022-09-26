@@ -1,9 +1,13 @@
+import Head from "next/head";
 import NextLink from "next/link";
 import Header from "../components/Header";
 
 const dashboard = () => {
   return (
     <>
+      <Head>
+        <title> 문장 - MUNJANG - Dashboard </title>
+      </Head>
       <Header />
       <div className="center-items">
         <div className="text-5xl font-bold text-white">
