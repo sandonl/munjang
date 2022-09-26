@@ -9,6 +9,7 @@ interface NewCardsProps {}
 const NewCards = ({}: NewCardsProps) => {
   const { data: session } = useSession({ required: true });
   const [cardSubmitted, setCardSubmitted] = useState<boolean>(false);
+  const [buttonDisable, setButtonDisable] = useState<boolean>(false);
   const [errors, setErrors] = useState<boolean>(false);
   const [formData, setFormData] = useState({
     front: "",
@@ -37,12 +38,14 @@ const NewCards = ({}: NewCardsProps) => {
       }, 3000);
       return;
     } else {
+      setButtonDisable(true);
       await newCard.mutateAsync({
         ...formData,
         userId: session?.user?.id!,
       });
       setFormData({ front: "", back: "" });
       setCardSubmitted(true);
+      setButtonDisable(false);
       setTimeout(() => {
         setCardSubmitted(false);
       }, 3000);
@@ -87,7 +90,12 @@ const NewCards = ({}: NewCardsProps) => {
                   className="input input-primary"
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button
+                type="submit"
+                className={`btn ${
+                  buttonDisable ? "btn-disable" : "btn-primary"
+                }`}
+              >
                 Create Card
               </button>
             </div>
