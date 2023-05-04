@@ -4,23 +4,20 @@ The role of an SRS is crucial to language learners being able to retain and lear
 
 The site is hosted on Vercel (FE) and PlanetScale (BE).
 
-## TODO:
+Tech Stack (T3):
 
-- A way for the system to recognise that a review has been completed for the day. (DONE)
-- Deploy to FE (DONE)
-- Handling fails
-  - To handle a fail, we need to not increase the review counter but still update the date of when the card was last reviewed
-- Retiring Cards (I.e. when an upper limit is reached, we need to retire cards)
-- Add a favicon (DONE)
-- New Frontpage with a description of how the app works (DONE)
-- Add back buttons on the review and new card pages (DONE) - fixed with dashboard on the header
-- Add Tooltip (DaisyUI) -> (DONE)
-- Better Loading response and indicator for creating a card
-- Fonts are different on the new card page.
-- Maybe add ability to create decks
-- Add key press listeners (DONE for New Card)
+- React
+- TypeScript
+- Tailwind
+- Next.js
+- Vercel
+- NextAuth (Google Provider)
+- tRPC (N.B. V9.0)
+- PlanetScale
 
-This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
+![](/readme_img/homepage.png)
+![](/readme_img/dashboard.png)
+![](/readme_img/review.png)
 
 # T3 - Stack Details:
 
@@ -248,3 +245,21 @@ Here are some useful references you can further look into:
 Here are some resources that we commonly refer to:
 
 - [Protecting routes with Next-Auth.js](https://next-auth.js.org/configuration/nextjs#unstable_getserversession)
+
+## TODO:
+
+- A way for the system to recognise that a review has been completed for the day. (DONE)
+- Deploy to FE (DONE)
+- Handling fails
+  - To handle a fail, we need to not increase the review counter but still update the date of when the card was last reviewed
+- Retiring Cards (I.e. when an upper limit is reached, we need to retire cards)
+- Add a favicon (DONE)
+- New Frontpage with a description of how the app works (DONE)
+- Add back buttons on the review and new card pages (DONE) - fixed with dashboard on the header
+- Add Tooltip (DaisyUI) -> (DONE)
+- Better Loading response and indicator for creating a card
+- Fonts are different on the new card page.
+- Maybe add ability to create decks
+- Add key press listeners (DONE for New Card)
+
+This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.

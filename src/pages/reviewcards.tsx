@@ -6,19 +6,9 @@ import FlashCard from "../components/FlashCard";
 
 import Header from "../components/Header";
 import { trpc } from "../utils/trpc";
+import Layout from "../components/Layout";
 
-const HeadElements = () => {
-  return (
-    <>
-      <Head>
-        <title> 문장 - MUNJANG - Review Cards </title>
-      </Head>
-      <Header />
-    </>
-  );
-};
-
-const reviewcards = () => {
+const ReviewCards = () => {
   const { data: session } = useSession({ required: true });
   const [index, setIndex] = useState<number>(0);
   const [cardsRemaining, setCardsRemaining] = useState(0);
@@ -45,7 +35,6 @@ const reviewcards = () => {
     fetchCards();
   }, [session]);
 
-  // To be refactored
   if (
     retrieveCards.isLoading ||
     retrieveCards.isFetching ||
@@ -53,10 +42,12 @@ const reviewcards = () => {
   ) {
     return (
       <>
-        <HeadElements />
-        <div className="center-items text-white text-3xl">
-          <div> Loading ... </div>
-        </div>
+        <Layout title="Loading...">
+          <Header />
+          <div className="center-items text-white text-3xl">
+            <div> Loading ... </div>
+          </div>
+        </Layout>
       </>
     );
   }
@@ -65,24 +56,27 @@ const reviewcards = () => {
 
   return (
     <>
-      <HeadElements />
-      <div className="center-items">
-        {cardsRemaining ? (
-          <FlashCard
-            key={retrieveCards.data[index]?.id}
-            cardId={retrieveCards.data[index]?.id!}
-            front={retrieveCards.data[index]?.front!}
-            back={retrieveCards.data[index]?.back!}
-            incrementIndex={incrementIndex}
-          />
-        ) : (
-          <div className="center-items text-white text-3xl">
-            You have no more cards remaining today. Come back again tomorrow! 🥳
-          </div>
-        )}
-      </div>
+      <Layout title="Review Cards">
+        <Header />
+        <div className="center-items">
+          {cardsRemaining ? (
+            <FlashCard
+              key={retrieveCards.data[index]?.id}
+              cardId={retrieveCards.data[index]?.id!}
+              front={retrieveCards.data[index]?.front!}
+              back={retrieveCards.data[index]?.back!}
+              incrementIndex={incrementIndex}
+            />
+          ) : (
+            <div className="center-items text-white text-3xl">
+              You have no more cards remaining today. Come back again tomorrow!
+              🥳
+            </div>
+          )}
+        </div>
+      </Layout>
     </>
   );
 };
 
-export default reviewcards;
+export default ReviewCards;

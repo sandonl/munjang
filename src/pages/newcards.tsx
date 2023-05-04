@@ -3,6 +3,7 @@ import Head from "next/head";
 import React, { useState } from "react";
 import Header from "../components/Header";
 import { trpc } from "../utils/trpc";
+import Layout from "../components/Layout";
 
 interface NewCardsProps {}
 
@@ -54,60 +55,59 @@ const NewCards = ({}: NewCardsProps) => {
 
   return (
     <>
-      <Head>
-        <title> 문장 - MUNJANG - New Cards </title>
-      </Head>
-      <Header />
-      <div className="center-items">
-        <div className="border border-purple-300 rounded-md w-6/12 p-10 pt-12 flex flex-col justify-center items-center ">
-          <form onSubmit={handleSubmit}>
-            <div className="flex flex-col p-4 gap-4 w-96">
-              <div className={divStyling}>
-                <div
-                  className="tooltip cursor-pointer"
-                  data-tip="Front - Target Sentence"
-                >
-                  <h3> Front </h3>
+      <Layout title="New Cards">
+        <Header />
+        <div className="center-items">
+          <div className="border border-purple-300 rounded-md w-6/12 p-10 pt-12 flex flex-col justify-center items-center ">
+            <form onSubmit={handleSubmit}>
+              <div className="flex flex-col p-4 gap-4 w-96">
+                <div className={divStyling}>
+                  <div
+                    className="tooltip cursor-pointer"
+                    data-tip="Front - Target Sentence"
+                  >
+                    <h3> Front </h3>
+                  </div>
+                  <input
+                    value={formData.front}
+                    onChange={handleChange}
+                    name="front"
+                    className="input input-primary"
+                  />
                 </div>
-                <input
-                  value={formData.front}
-                  onChange={handleChange}
-                  name="front"
-                  className="input input-primary"
-                />
-              </div>
-              <div className={divStyling}>
-                <div
-                  className="tooltip cursor-pointer"
-                  data-tip="Back - Target Word and it's definition"
-                >
-                  <h3>Back </h3>
+                <div className={divStyling}>
+                  <div
+                    className="tooltip cursor-pointer"
+                    data-tip="Back - Target Word and it's definition"
+                  >
+                    <h3>Back </h3>
+                  </div>
+                  <input
+                    value={formData.back}
+                    onChange={handleChange}
+                    name="back"
+                    className="input input-primary"
+                  />
                 </div>
-                <input
-                  value={formData.back}
-                  onChange={handleChange}
-                  name="back"
-                  className="input input-primary"
-                />
+                <button
+                  type="submit"
+                  className={`btn ${
+                    buttonDisable ? "btn-disable" : "btn-primary"
+                  }`}
+                >
+                  Create Card
+                </button>
               </div>
-              <button
-                type="submit"
-                className={`btn ${
-                  buttonDisable ? "btn-disable" : "btn-primary"
-                }`}
-              >
-                Create Card
-              </button>
+            </form>
+            <div className="text-red-200 font-bold text-center h-3 transition-opacity">
+              {errors ? "Please enter text for both the front and back" : ""}
             </div>
-          </form>
-          <div className="text-red-200 font-bold text-center h-3 transition-opacity">
-            {errors ? "Please enter text for both the front and back" : ""}
-          </div>
-          <div className="text-green-200 font-bold text-center h-3 transition-opacity ">
-            {cardSubmitted ? "Card Created! " : ""}
+            <div className="text-green-200 font-bold text-center h-3 transition-opacity ">
+              {cardSubmitted ? "Card Created! " : ""}
+            </div>
           </div>
         </div>
-      </div>
+      </Layout>
     </>
   );
 };
